@@ -28,12 +28,47 @@ Save generated tables and figures separately from `data/raw_data/`, for example 
 - Missing replicate values are `NA` in the raw CSV. Handle them explicitly in the data audit, not silently.
 - Region coordinates (UniProt P60484): phosphatase domain 14-185, C2 domain 190-350, disordered tail 352-403.
 
+## Course conventions (from `slides/notebook-01..06.ipynb`)
+
+The six course notebooks are a Python-fundamentals sequence on toy DNA strings, not the PTEN analysis: strings and indexing, slicing/`.count`/`.replace`, `if`/`elif`, `for` loops, accumulators, then functions with contracts and `assert` tests. They share a house style that student code and reviews should follow:
+
+- Every notebook ends with an "Audit" section: code that runs but overclaims (for example, an `N` check labeled "valid sequence", a complement that is not reversed, a GC calculation that counts only G). Prefer stating exactly what a check verifies and no more.
+- Functions start from a written contract (accepted input, returned value, no mutation), then get known-answer `assert` tests chosen to expose plausible errors (e.g. a C-only input for a G-only bug). Out-of-contract input (lowercase, `N`, empty string) is flagged, not silently accepted.
+- Loop and accumulator bugs are localized by printing intermediate state, not by inspecting only the final result.
+- Plain loops, `if`/`elif`, and built-in string operations are the expected level. Avoid introducing libraries or idioms the course has not yet covered when writing example code, unless the task involves pandas (the project spec does).
+
+## Project sessions (from the `Project 1, Session 1-4` slide PDFs)
+
+Each session ends with an assignment that feeds the next. Later sessions rely on earlier definitions, so keep them consistent:
+
+1. **Toy VAMP-seq:** explain columns, compute weighted scores, normalize (subtract median nonsense, divide by WT minus median nonsense), and critique the results.
+2. **Data audit:** explain what each row and column means; parse `hgvs_pro` into site, WT residue, and mutant; verify the WT residue against the FASTA (mind 1-based sites vs 0-based Python indexes; decide what happens to stop labels and out-of-range positions); compare score distributions for WT, missense, nonsense, and synonymous variants. The real table differs from the toy one: scores per variant (not counts per variant-replicate), and the nonsense reference is an average, not a median. The real scores are published, not recomputed.
+3. **Position-level summaries:** coverage across all 403 positions (including positions with no measured substitutions), per-position statistics for positions with at least `minimum_variants=5` included substitutions, missing kept distinct from zero, and test functions that flag or reject unexpected input.
+4. **Regions and sensitivity:** assign each variant a region; per region report included variants, included sites, and total sites; report both the median of all variant scores and the median of per-site medians and interpret the difference; visualize by region; test sensitivity to `minimum_variants` and to a minimum `expts` per variant. Roles rotate at the start of Session 4.
+
+Every session's discussion asks for the same three things: what was done conceptually, how the code achieves it, and how assumptions were checked. Structure results and explanations that way.
+
+### pandas and reproducibility conventions
+
+- Use `pathlib.Path` for paths, relative to a stated project root, not hardcoded absolute paths.
+- Compare or combine tables by merging on an identifier (`on="position"`, `how="outer"`, `indicator=True`, `validate="one_to_one"`), never by row order. A missing comparison is not zero change.
+- Use tidy layout: one variable per column, one observation per row, one value per cell. State what one row represents and what missing values mean.
+- Record inputs and their source, filtering rules and parameters, and versions. End notebooks with `session_info.show(dependencies=True)`, and export the environment (`conda env export > environment.yml`). Restart and run all cells before saving a notebook.
+
+### Figure style (Session 4)
+
+- Labels are descriptive and legible, with units where relevant. State the WT reference, since "high" and "low" abundance are anchored to WT (score 1).
+- Set `figsize` to the final display size (paper, slide, poster) so text is readable.
+- Color and shape keep one meaning across figures and panels. Use colorblind-safe categorical palettes. Use perceptually uniform sequential palettes for ordered quantities, and diverging palettes only with a meaningful center (1 for abundance vs WT, 0 for a difference), with a colorbar that has a label and scale marks.
+- Do not let a color scheme create sharp boundaries that the data do not support. Keep gridlines subtle.
+
 ## Known quirks
 
 - `Toy_VAMP_2.py` (a teammate's script) hardcodes a macOS absolute path to the CSV; it won't run here without changing the path.
 - `slides/project-1.md` links data under `./data/project-1/...`, but the files here live under `data/raw_data/`.
 - `manifest.json` cites `scripts/prepare_data.py`, which is not in this directory.
-- The directory is inside OneDrive, so avoid large generated files, and it is not a git repository.
+- Reading PDFs needs poppler, which was installed with winget. If the Read tool still reports `pdftoppm` missing after an app restart, render pages to PNG with the full path to `pdftoppm.exe` (under `%LOCALAPPDATA%\Microsoft\WinGet\Packages\oschwartz10612.Poppler_*`) and read the images.
+- The directory is inside OneDrive, so avoid large generated files. It is a git repository (branch `main`); commit before large edits so they can be undone.
 
 ## Working preferences
 
