@@ -16,6 +16,7 @@ The data come from a VAMP-seq MAVE (Matreyek et al. 2018), MaveDB score set `urn
   - `examples/toy_vampseq_bin_counts.csv` is invented teaching data (4 sort bins per variant per replicate), not real measurements.
   - `manifest.json` records SHA-256 hashes, provenance, and validation counts (4409 rows: 4112 missense, 140 nonsense, 156 synonymous, 1 wild_type).
 - `code/my_code/`: the user's own notebooks, one per session assignment. They are scaffolds (imports, data loading, markdown prompts, empty code cells) that the user fills in by hand to learn, so do not write the analysis code in them. When asked, proofread only. `session-1-warmup` is the toy scoring, `session-2-dataAudit` is the real-data audit, `session-3-scores` is position coverage and statistics, and `session-4-dataViz` covers regions, figures, and sensitivity. Run the notebooks with `code/my_code` as the working directory.
+- `code/final_code/`: the team's integrated notebooks, started as an exact copy of `my_code`. The repo owner (`@Vijay-Kiran-C`) owns it via `.github/CODEOWNERS`, which only auto-requests review unless branch protection requires code-owner approval. Teammates propose changes through pull requests. Do not edit it unless asked, and keep it consistent with `my_code` only when the user says to sync them.
 - `code/group_code/`: teammates' notebooks and scripts. Treat as reference; don't edit without being asked.
 - `slides/`: course notebooks, slide PDFs, and the project spec.
 
@@ -68,7 +69,7 @@ Every session's discussion asks for the same three things: what was done concept
 - `slides/project-1.md` links data under `./data/project-1/...`, but the files here live under `data/raw_data/`.
 - `manifest.json` cites `scripts/prepare_data.py`, which is not in this directory.
 - Reading PDFs needs poppler, which was installed with winget. If the Read tool still reports `pdftoppm` missing after an app restart, render pages to PNG with the full path to `pdftoppm.exe` (under `%LOCALAPPDATA%\Microsoft\WinGet\Packages\oschwartz10612.Poppler_*`) and read the images.
-- The directory is inside OneDrive, so avoid large generated files. It is a git repository (branch `main`); commit before large edits so they can be undone.
+- The directory is inside OneDrive, so avoid large generated files. It is a git repository (branch `main`) with the remote `origin` at `github.com/Vijay-Kiran-C/CMSB_Python1_Proj1`. Commit before large edits so they can be undone, and only push when the user asks.
 
 ## Working preferences
 
