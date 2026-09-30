@@ -1,0 +1,9 @@
+hgvs_pro,record_type,score,expts,se,abundance_class_label,reason_selected
+_wt,wild_type,1.0,8.0,0.0,wt_like,normalized reference anchor
+p.Asn12=,synonymous,1.27847055661566,3.0,0.153179084551225,wt_like,synonymous control notation
+p.Tyr76Ter,nonsense,0.0915319576710646,4.0,0.0618560907759113,low,nonsense record that a weak parser may misclassify
+p.His75Asp,missense,1.04565484349853,4.0,0.0982626333078057,wt_like,ordinary missense variant
+p.Pro38Ser,missense,1.13611952068973,4.0,0.131353582332628,wt_like,wild-type-like abundance but known contextual complexity
+p.Cys124Ser,missense,1.13746760599211,6.0,0.10547983111198,wt_like,active-site substitution with wild-type-like abundance
+p.Ser385Ala,missense,0.5573479991903381,8.0,0.0700761123601422,low,tail substitution with low measured abundance
+p.Asn12Ile,missense,0.29871690791744104,7.0,0.102908969748864,low,low-abundance missense example

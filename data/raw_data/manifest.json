@@ -1,0 +1,67 @@
+{
+  "derived": {
+    "pten-reference-protein.fasta": {
+      "generated_by": "scripts/prepare_data.py",
+      "sha256": "ee3947a42f6ee3c211350406afe5efce979b6e38b69dae1b6c371809899f810e"
+    },
+    "pten-region-annotations.csv": {
+      "generated_by": "scripts/prepare_data.py",
+      "sha256": "30d6061e93e0995bcf12b910c5bf63467c741a952341d7fef97fb5a99e443064"
+    },
+    "pten-teaching-examples.csv": {
+      "generated_by": "scripts/prepare_data.py",
+      "sha256": "be4b03868f9db53471f5a20dbd3a38e6e910e93027211ed9b3d36e1451e0ff3b"
+    },
+    "pten-variant-abundance.csv": {
+      "generated_by": "scripts/prepare_data.py",
+      "sha256": "e5a0a552896dd3f1d028f93a56861879c366e2b53f4242a98e722c447f163f8a"
+    }
+  },
+  "license": "CC0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "project": "Project 1: PTEN variant abundance",
+  "retrieved": "2026-08-12",
+  "score_set_modified": "2026-06-01",
+  "score_set_urn": "urn:mavedb:00000013-a-1",
+  "sources": {
+    "mavedb-00000013-a-1-metadata.json": {
+      "sha256": "723dbd9110e0b697af7114afb0a51bb490a01417073167ef1fcb6671b567ac04",
+      "url": "https://api.mavedb.org/api/v1/score-sets/urn:mavedb:00000013-a-1"
+    },
+    "mavedb-00000013-a-1-scores.csv": {
+      "sha256": "ceaf3f0720af8aa06012d60959efbcd7ab54a5317d2bebdace8a0f49de4b2b97",
+      "url": "https://api.mavedb.org/api/v1/score-sets/urn:mavedb:00000013-a-1/scores"
+    },
+    "region_annotation": {
+      "accession": "P60484",
+      "reviewed_coordinates": {
+        "c2_domain": [
+          190,
+          350
+        ],
+        "disordered_tail": [
+          352,
+          403
+        ],
+        "phosphatase_domain": [
+          14,
+          185
+        ]
+      },
+      "url": "https://www.uniprot.org/uniprotkb/P60484/entry"
+    }
+  },
+  "validation": {
+    "all_missense_reference_residues_match": true,
+    "metadata_num_variants": 4409,
+    "protein_length": 403,
+    "protein_sequence_sha256": "2675a6cc946076d70342977845afe793269c5987a998382100bede64d1e61b42",
+    "record_type_counts": {
+      "missense": 4112,
+      "nonsense": 140,
+      "synonymous": 156,
+      "wild_type": 1
+    },
+    "source_rows": 4409
+  }
+}
