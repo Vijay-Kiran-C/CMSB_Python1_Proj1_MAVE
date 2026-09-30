@@ -69,7 +69,7 @@ Every session's discussion asks for the same three things: what was done concept
 - `slides/project-1.md` links data under `./data/project-1/...`, but the files here live under `data/raw_data/`.
 - `manifest.json` cites `scripts/prepare_data.py`, which is not in this directory.
 - Reading PDFs needs poppler, which was installed with winget. If the Read tool still reports `pdftoppm` missing after an app restart, render pages to PNG with the full path to `pdftoppm.exe` (under `%LOCALAPPDATA%\Microsoft\WinGet\Packages\oschwartz10612.Poppler_*`) and read the images.
-- The directory is inside OneDrive, so avoid large generated files. It is a git repository (branch `main`) with the remote `origin` at `github.com/Vijay-Kiran-C/CMSB_Python1_Proj1`. Commit before large edits so they can be undone, and only push when the user asks.
+- The directory is inside OneDrive, so avoid large generated files. It is a git repository (branch `main`) with the remote `origin` at `github.com/Vijay-Kiran-C/CMSB_Python1_Proj1_MAVE`. Commit before large edits so they can be undone, and only push when the user asks.
 
 ## Working preferences
 
