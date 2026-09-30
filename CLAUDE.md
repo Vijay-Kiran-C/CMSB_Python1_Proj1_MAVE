@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Coursework for a Python class (Project 1: PTEN variant abundance). The analysis is done in Jupyter notebooks with pandas/numpy/seaborn; there is no build system, test suite, linter, or package manifest. Python 3.11 on Windows (PowerShell). The assignment spec is `slides/project-1.md`; it describes a six-class arc: toy VAMP-seq scoring, data audit of real PTEN data, position/region summaries, testing a claim, robustness, then an extension and presentation.
+Coursework for a Python class (Project 1: PTEN variant abundance). The analysis is done in Jupyter notebooks with pandas/numpy/seaborn; there is no build system, test suite, or linter. Python 3.11 on Windows (PowerShell). The venv lives outside OneDrive at `C:\Users\james\venvs\pten-project` (run `Scripts\python.exe` from there, or select it as the notebook kernel); `requirements.txt` pins its packages (pandas 3.x, numpy 2.x). The system `python` has no packages. The assignment spec is `slides/project-1.md`; it describes a six-class arc: toy VAMP-seq scoring, data audit of real PTEN data, position/region summaries, testing a claim, robustness, then an extension and presentation.
 
 The data come from a VAMP-seq MAVE (Matreyek et al. 2018), MaveDB score set `urn:mavedb:00000013-a-1`. The assay measures protein abundance only, not catalytic activity or pathogenicity, so keep interpretations within that.
 
@@ -15,7 +15,7 @@ The data come from a VAMP-seq MAVE (Matreyek et al. 2018), MaveDB score set `urn
   - `derived/` holds course-prepared tables: `pten-variant-abundance.csv` (main table; `hgvs_pro`, `score`, `se`, `expts`, `record_type`, `abundance_class_label`), the PTEN FASTA (403 aa), region annotations, and a small preview.
   - `examples/toy_vampseq_bin_counts.csv` is invented teaching data (4 sort bins per variant per replicate), not real measurements.
   - `manifest.json` records SHA-256 hashes, provenance, and validation counts (4409 rows: 4112 missense, 140 nonsense, 156 synonymous, 1 wild_type).
-- `code/my_code/`: the user's own notebooks, one per session (warmup, data audit, scores).
+- `code/my_code/`: the user's own notebooks, one per session assignment. They are scaffolds (imports, data loading, markdown prompts, empty code cells) that the user fills in by hand to learn, so do not write the analysis code in them. When asked, proofread only. `session-1-warmup` is the toy scoring, `session-2-dataAudit` is the real-data audit, `session-3-scores` is position coverage and statistics, and `session-4-dataViz` covers regions, figures, and sensitivity. Run the notebooks with `code/my_code` as the working directory.
 - `code/group_code/`: teammates' notebooks and scripts. Treat as reference; don't edit without being asked.
 - `slides/`: course notebooks, slide PDFs, and the project spec.
 
