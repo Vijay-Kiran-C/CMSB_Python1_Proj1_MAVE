@@ -50,7 +50,7 @@ Everything below was checked against `pten-variant-abundance.csv` before writing
    - **16 missense scores are <= 0**, so their log ratio does not exist. They stay as NaN (shown grey), never dropped silently and never set to 0.
    - **Scores near 0 blow up on the log scale.** The 1st percentile is 0.087, and log2(0.087) is about -3.5, so the log stretches the noisy low end and compresses the high end.
    - **DECIDE:** which "difference from WT" do you want in hm.diff.x? Options: (i) log2 ratio exactly as you described, (ii) linear difference `score - 1`, centered on 0, (iii) both for one figure to compare. *Recommended: (i) for the heatmaps as requested, with one side-by-side against (ii) so the group can see what the log does.*
-4. **Mean versus median has a clean answer.** Log is a monotone transform, so `median(log2(score)) == log2(median(score))`, so the median gives identical conclusions on either scale. The mean does not (`mean(log2(x)) != log2(mean(x))`). That is a good reason to keep medians as in Session 4. I'd compute the log ratio per variant first and summarize second, and show the mean as a sensitivity check (this connects to your histogram observation in Session 5). *Recommended default: median, mean as a check.*
+4. **Mean versus median has a clean answer.** Log is a monotone transform, so the same variant is in the middle on both scales and `median(log2(score)) == log2(median(score))` holds exactly for an **odd** number of values. *(Correction found while building the notebook: for an even number the median averages the two middle values, and the two routes differ slightly, up to 0.14 log2 units in this data.)* The mean never matches (`mean(log2(x)) != log2(mean(x))`). So the log ratio is taken per variant first and summarized second. That is a good reason to keep medians as in Session 4. I'd compute the log ratio per variant first and summarize second, and show the mean as a sensitivity check (this connects to your histogram observation in Session 5). *Recommended default: median, mean as a check.*
 5. **DECIDE: hm.abund.3 / hm.diff.3 ("aggregate by class change using the site median").** A "site median" is one median per *site*, and a given site has a fixed WT class, so at each site only 4 of the 16 class-change rows can be filled (25% maximum). Most (site, class change) cells then contain 1 to 3 variants, and the `minimum_variants = 5` rule from Session 4 would remove nearly all of them. Options:
    - (a) Aggregate per (class change x **position window**, e.g. 25 sites per bin), with median and n.
    - (b) Aggregate per (class change x **region**) (16 x 3 or 4 cells), which is also the cleanest bridge to your region hypothesis.
@@ -93,5 +93,24 @@ A good check **can fail, and its failure tells you what went wrong.** "I looked 
 - Notebook location: `code/my_code/session-6-extension.ipynb`, with the functions defined once in a cell right after the imports, as in the other notebooks.
 - Per your instruction, I will list holes and next steps at the end and not act on them.
 
+# VKC Follow Up
 
+## A. 
+1. Do (a) + (b), mutant residue and subtitution type
+2. Thanks for the clarification.
+3. When I said normalize, I just meant log2(score / 1) (log ratio to wild type). My bad. Dp the recommended plan.
+4. Sounds good.
+5. Sounds good, proceed with recommended.
+6. Go ahead with what you recommended. 
+
+## B.
+7. Show signed medians in the figures. Ignore testing the magnitudes.
+8. Yes, this is a great point and one I had considered. Good job catching this!
+9. A check here would be nice. I don't know if we would include it in the talk, so leave it on the table for future steps.
+
+## C.
+10. Yes! I'll make sure to explain how exactly I did this, and I'll share the repo with anyone who wants it. 
+
+## E.
+- Good to know about `.` being reserved in python. I'll stick with underscores, I like them better anyways.
 
