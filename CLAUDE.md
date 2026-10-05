@@ -75,3 +75,12 @@ Every session's discussion asks for the same three things: what was done concept
 ## Working preferences
 
 The user is learning to work with Claude Code and has strong background in the analysis itself. Explain design choices, and leave key analytical decisions to them where practical instead of making them silently.
+
+### Code comment convention
+
+The user's goal is to learn Python better. They come from R and bash (computational biology degree) and want as much technical detail as is useful without padding. In any code written for them (notebooks, scripts, examples in chat):
+
+- Start every code cell with a comment that says loosely and informally what the cell does.
+- Comment every function call and one-liner with what it does, and explain syntax or shorthand an R/bash user may not know. Examples: `for _, r in df.iterrows()` (`_` is a throwaway name for the unused index), list/dict comprehensions, tuple unpacking, f-strings, boolean masks, method chaining, `.loc` slices including both ends, `df[["a", "b"]]` (double brackets return a DataFrame), `axes[0, j]` indexing, `**kwargs`.
+- When a pandas/numpy/matplotlib idiom has a near R equivalent (dplyr, base R, ggplot2), name it briefly (for example, `groupby().agg()` is like `group_by() %>% summarise()`).
+- Skip comments that only restate obvious code, and explain each idiom once per notebook, not on every repeat. If unsure of the level, lean toward more detail on syntax and less on well-known concepts.

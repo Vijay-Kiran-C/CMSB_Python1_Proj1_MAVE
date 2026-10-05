@@ -3,3 +3,5 @@ __pycache__/
 *.pyc
 .venv/
 outputs/
+Amino Acid Chart.pdf
+aminoacids-pic.pdf
